@@ -17,7 +17,7 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup {
   require 'plugins.neotree',
   require 'plugins.colortheme',
-  require 'plugins.lualine',
+  -- require 'plugins.lualine',
   require 'plugins.bufferline',
   --require 'plugins.treesitter',
   --require 'plugins.telescope',
@@ -31,5 +31,5 @@ require('lazy').setup {
   --require 'plugins.comment',
 }
 
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
+-- Todos - 
+-- backslash seemes to only open the neo tree. It should toggle it. Or bind the neotree to ctrl + e to open/close

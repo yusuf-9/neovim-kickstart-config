@@ -137,7 +137,7 @@ return {
             'toggle_node',
             nowait = true -- disable `nowait` if you have existing combos starting with this char that you want to use
           },
-
+          ["h"] = "close_node", -- Collapse folder
           ['<2-LeftMouse>'] = 'open',
           ['<cr>'] = 'open',
           ['<esc>'] = 'cancel', -- close preview or floating neo-tree window
@@ -243,6 +243,7 @@ return {
             ['on'] = { 'order_by_name', nowait = false },
             ['os'] = { 'order_by_size', nowait = false },
             ['ot'] = { 'order_by_type', nowait = false },
+            ["L"] = "open_nofocus",
           },
           fuzzy_finder_mappings = { -- define keymaps for filter popup window in fuzzy_finder_mode
             ['<down>'] = 'move_cursor_down',
@@ -252,7 +253,14 @@ return {
           },
         },
 
-        commands = {}, -- Add a custom command or override a global one using the same function name
+        commands = {
+        open_nofocus = function(state)
+          require("neo-tree.sources.filesystem.commands").open(state)
+          vim.schedule(function()
+            vim.cmd([[Neotree focus]])
+          end)
+        end,
+        }, -- Add a custom command or override a global one using the same function name
       },
       buffers = {
         follow_current_file = {
